@@ -1,13 +1,6 @@
 #game {
     background-color: #4a6196;
 }
-.snow {
-    padding-top: 5%;
-    height: 100vh;
-    background-color: aliceblue;
-}
-.street {
-border: 2px solid aliceblue;
-background-color: black;
-height: 90vh;
+html{
+    border: solid 1px black;
 }

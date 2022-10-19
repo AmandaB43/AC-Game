@@ -1,9 +1,16 @@
-let greenGuy = document.createElement('img')
+/*let greenGuy = document.createElement('img')
 greenGuy.src="assets/green-guy/green-character.gif"
 greenGuy.style.position = "fixed"
 greenGuy.style.bottom = "100px"
 greenGuy.style.left = "100px"
-document.body.append(greenGuy)
+document.body.append(greenGuy)*/
+
+function newGif(url){
+    let image = document.createElement('img')
+    image.src = url
+    document.body.append(image)
+    return image
+}
 
 //Images to go with movement
 const player = newGif('assets/green-guy/static.gif')
@@ -28,6 +35,7 @@ move(player).witharrowKeys(100,250, directionChange)
 let direction = null;
 let y = 250;
 let x = 100;
+
 setInterval(function(){
     if(direction === "north"){
         y = y + 1
@@ -45,13 +53,33 @@ setInterval(function(){
     player.style.left = x + 'px'
 },1)
 
+document.addEventListener("keydown",function(e){
+    if(e.repeat) return;
+    if(e.key === 'ArrowUp'){
+        direction = 'north'
+    }
+    if(e.key === 'ArrowDown'){
+        direction = 'south'
+    }
+    if(e.key === 'ArrowRight'){
+        direction = 'east'
+    }
+    if(e.key === 'ArrowLeft'){
+        direction = 'west'
+    }
+    document.addEventListener('keyup', function(e){
+        direction = null
+    })
+})
+move(player).to(100,250)
 
 //Functions that will move character with each key stroke(and what direction)
-function move(element){
+/* function move(element){
     element.style.position = 'fixed'
-function moveToPlaces(left,bottom){
-    element.style.bottom = y + 'px'
-    element.style.left = x + 'px'
+
+function moveToPlaces(left, bottom) {
+    element.style.bottom = bottom + 'px'
+    element.style.left = left + 'px'
 }
 function movewitharrowKeys(left,bottom,callback){
     let direction = null;
@@ -59,7 +87,7 @@ function movewitharrowKeys(left,bottom,callback){
     let x = left;
     element.style.bottom = y + 'px'
     element.style.left = x + 'px'
-    function moveCharacter(){
+ function movePlayer(){
         if(direction==="north"){
             y+=1
         }
@@ -75,7 +103,7 @@ function movewitharrowKeys(left,bottom,callback){
         element.style.bottom = y + 'px'
         element.style.left = x + 'px'
     }
-    setInterval(moveCharacter,1)
+    setInterval(movePlayer,1)
     document.addEventListener('keydown',function(e){
         if(e.repeat) return;
         if(e.key === "ArrowUp"){
@@ -101,4 +129,4 @@ function movewitharrowKeys(left,bottom,callback){
     to: moveToPlaces,
     withkeys:movewitharrowKeys
     }
-}
+} */
